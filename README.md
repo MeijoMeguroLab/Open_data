@@ -2,7 +2,7 @@
  If you would like to use the data set, please fill out [this form](https://forms.gle/w22wkHnyewGXhJN6A).
  A representative will contact you with the distribution address.<br>
  
- <b>This dataset is only available to users in Japan until it is ready to be used overseas. (2021/3/11) (2021/3/11)</b><br>
+ <b>This dataset is only available to users in Japan until it is ready to be used overseas. (2021/3/11)</b><br>
 ## System Description
 
 <img src="docs/car_image.png" width="512">
