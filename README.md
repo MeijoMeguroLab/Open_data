@@ -1,6 +1,8 @@
 # GNSS/IMU Open Data Set for Autonomous Driving
  If you would like to use the data set, please fill out [this form](https://forms.gle/w22wkHnyewGXhJN6A).
- A representative will contact you with the distribution address.
+ A representative will contact you with the distribution address.<br>
+ 
+ <b>This dataset is only available to users in Japan until it is ready to be used overseas. (2021/3/11) (2021/3/11)</b><br>
 ## System Description
 
 <img src="docs/car_image.png" width="512">
@@ -177,7 +179,7 @@ The user may publish the results of using the dataset by maintaining this licens
 The user may not use the dataset for any act that violates the laws and regulations of Japan or the country or region to which the user belongs.<br>
 The user may not copy or modify the dataset for use in a commercial product.<br>
 The user may not copy the dataset and transfer it to anyone other than their own organization.<br>
-In accordance with the catch-all control of Japan, this dataset is not available to those who belong to [the end-user list](https://www.meti.go.jp/english/press/2020/0508_002.html).<br>
+In accordance with the catch-all control of Japan, this dataset is may not be available to those who belong to [the end-user list](https://www.meti.go.jp/english/press/2020/0508_002.html) and the related countries and regions.<br>
 <br>
 <b>Warranty</b><br>
 The user is responsible for all problems and damages caused by the use of this dataset.<br>
