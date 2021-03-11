@@ -88,7 +88,7 @@
 
   <b>Filename:</b>&emsp;lidar.bag<br>
   <b>Data Description:</b><br>
-  &emsp;The LiDAR data was collected with the Velodyne_driver.<br>
+  &emsp;The LiDAR data was collected with [the Velodyne_driver of ROS](http://wiki.ros.org/velodyne_driver).<br>
   &emsp;Velodyne HDL-32E was used. The data is stored in the velodyne_packets message.<br>
   
 - <b>True Positions and Poses</b>
