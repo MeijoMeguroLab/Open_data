@@ -5,19 +5,10 @@
  <b>This dataset is only available to users in Japan until it is ready to be used overseas. (2021/3/11)</b><br>
 ## System Description
 
-<img src="car_2019_image.png" width="512">
+<img src="car_2020_image.png" width="512">
 <img src="car_image_across.png" width="512">
 &emsp;This data was collected in the Odaiba area of Tokyo/Japan.<br>
 &emsp;The data includes information on the following sensors.<br>
-
-- <b>3D LiDAR</b>
-  - Model: Velodyne HDL-32E
-  - Vertical Field of view (FOV): +10~-30 degrees.
-  - Horizontal Field of view (FOV): 360 degrees.
-  - Ranging: max 80~100 meters.
-  - Data rate: 10 Hz.
-  - Channels: 32
-  - Accuracy: ± 2 cm accuracy
   
 - <b>IMU</b>
   - Model: ADIS16475-2
@@ -29,16 +20,22 @@
   - Model: u-blox F9P
     - Data rate: 5 Hz.
     - GNSS: BeiDou, Galileo, GPS / QZSS
-    - GNSS Bands: L2OF, L2C, E1B/C, B2I, E5b, L1C/A, L1OF, B1I
+    - GNSS Bands: B2I, E1B/C, L2OF, L2C, B1I, E5b, L1OF, L1C/A
     - Oscillator: TCXO
-  - Model: Trimble Alloy (Geodetic GNSS receiver)
-    - Data rate: 10 Hz.
+  - Model: Septentrio Mosaic-x5
+    - Data rate: 5 Hz.
     - GNSS: BeiDou, Galileo, GLONASS, GPS / QZSS
-    - GNSS Bands: L2OF, L2C, L5, E1B/C, B2I, E5b, L1C/A, L1OF, B1I
+    - GNSS Bands: E1C, L1OF, L1C/A, B2I, E5a, L2OF, L2C, L5, E5b
+  - Model: Trimble Alloy (Geodetic GNSS receiver)
+    - Data rate: 5 Hz.
+    - GNSS: BeiDou, Galileo, GLONASS, GPS / QZSS
+    - GNSS Bands: L5, B2I, E1B/C, L2OF, L2C, B1I, E5b, L1OF, L1C/A
 - <b>Rover GNSS Antenna</b>
-  - Model: AT1675-540 GNSS Antenna (AeroAntenna Technology, Inc.)
-
-
+  - Model: Trimble Zephyr 3 Rover
+- <b>CLAS receiver</b>
+  - Model: AQLOC-Light
+    - GNSS: Galileo, GPS / QZSS
+    - GNSS Bands: L6, L2C, E5b, L1C/A, E1
 - <b>Applanix POS LV</b> (high-grade RTK GNSS/INS integrated navigation system)
   - Model: POS LV 220
   - Data rate: 10 Hz.
@@ -53,22 +50,24 @@
 - <b>GNSS</b>
 
   <b>Filename:</b><br>
-  &emsp;Obserbation files of "ROVER" are "rover_ublox.obs" and "rover_trimble.obs".<br>
+  &emsp;Obserbation files of "ROVER" are "rover_ublox.obs", "rover_mosaic.obs" and "rover_trimble.obs".<br>
   &emsp;Obserbation file of "BASE" is "base_trimble.obs".<br>
-  &emsp;Position of BaseStation was -3961904.9530, 3348993.7578, 3698211.7553 in the ECEF coordinates.<br>
+  &emsp;Position of BaseStation was -3961903.8578, 3348993.2385, 3698211.3503 in the ECEF coordinates.<br>
   
   <b>RINEX VERSION:</b>&emsp;RINEX 3.02<br>
   
   <b>Cycle:</b><br>
   |  File Nmae  |  Cycle  |
   | ---- | ---- |
-  |  rover_trimble.obs  |  10Hz  |
+  |  rover_trimble.obs  |  5Hz  |
+  |  rover_mosaic.obs  |  5Hz  |
   |  rover_ublox.obs  |  5Hz  |
   |  base_trimble.obs  |  1Hz  |
   
   <b>GNSS Satellites:</b>&emsp;GPS, GLONASS, Galileo, BeiDou, QZSS<br>
   
-  &emsp;&emsp;Carriers, pseudoranges, dopplers, SNRs are includeed.<br>
+  &emsp;&emsp;Carriers, pseudoranges, dopplers, SNRs are includeed.(Exception: mosaic-x5 does not include dopplers)<br>
+  
   
 - <b>IMU</b>
 
@@ -87,12 +86,12 @@
   |  Acceleration Z(m/s^2)  |
   |  Wheel velocity  |
 
-- <b>LiDAR</b>
+- <b>CLAS</b>
 
-  <b>Filename:</b>&emsp;lidar.bag<br>
+  <b>Filename:</b>&emsp;rover_clas.l6<br>
   <b>Data Description:</b><br>
-  &emsp;The LiDAR data was collected with [the Velodyne_driver of ROS](http://wiki.ros.org/velodyne_driver).<br>
-  &emsp;Velodyne HDL-32E was used. The data is stored in the velodyne_packets message.<br>
+  &emsp;The L6 data was collected with [AQLOC-light](https://www.mitsubishielectric.co.jp/esg/aqloc/products/light/).<br>
+  &emsp;The data is stored in the CLAS packets message.<br>
   
 - <b>True Positions and Poses</b>
 
@@ -122,7 +121,7 @@
   |  Angular rate X (rad/s)  |
   |  Angular rate Y (rad/s)  |
   |  Angular rate Z (rad/s)  |
-
+  
 - <b>True Positions and Poses(Semi-dynamic corrected)</b>
 
   <b>Filename:</b>&emsp;semi-dynamic_corrected_reference.csv<br>
@@ -133,35 +132,23 @@
 ## Dataset Description
 
 ### Data No.1
- <b>Date&emsp;2019/11/02</b><br>
+ <b>Date&emsp;2020/12/17</b><br>
  
   |    |  GPS Week  |  GPS TOW(s)  |
   | ---- | ---- | ---- |
-  |  Start  |  2077  |  545460  |
-  |  End  |  2077  |  548370  |
+  |  Start  |  2136  |  360000  |
+  |  End  |  2136  |  362400  |
  
  <b>Environment:</b>&emsp;Odaiba/Tokyo Urban environment [[map](https://www.google.co.jp/maps/@35.6275683,139.7754449,14.75z?hl=ja)]<br>
- <img src="image_run1.png" width="480">
+ <img src="image_2020_run1.png" width="480">
 ***
 ### Data No.2 
- <b>Date&emsp;2019/11/02</b><br>
+ <b>Date&emsp;2020/12/17</b><br>
  
   |    |  GPS Week  |  GPS TOW(s)  |
   | ---- | ---- | ---- |
-  |  Start  |  2077  |  548488  |
-  |  End  |  2077  |  551002  |
+  |  Start  |  2136  |  368100  |
+  |  End  |  2136  |  370440  |
  
  <b>Environment:</b>&emsp;Odaiba/Tokyo Urban environment [[map](https://www.google.co.jp/maps/@35.6275683,139.7754449,14.75z?hl=ja)]<br>
- <img src="image_run2.png" width="480">
-***
-### Data No.3
- <b>Date&emsp;2019/11/02</b><br>
- 
-  |    |  GPS Week  |  GPS TOW(s)  |
-  | ---- | ---- | ---- |
-  |  Start  |  2077  |  551105  |
-  |  End  |  2077  |  552679  |
-
- <b>Environment:</b>&emsp;Odaiba/Tokyo Urban environment [[map](https://www.google.co.jp/maps/@35.6343741,139.7892038,15.75z?hl=ja)]<br>
- <img src="image_run3.png" width="480">
-
+ <img src="image_2020_run2.png" width="480">

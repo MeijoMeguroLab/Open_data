@@ -5,6 +5,7 @@
 ## Page List
 
 - <b>Data collected in the Odaiba area of Tokyo/Japan (2019/12)</b> [[link](https://github.com/MeijoMeguroLab/open_data/blob/main/docs/2019_dataset.md)]
+- <b>Data collected in the Odaiba area of Tokyo/Japan (2020/12)</b> [[link](https://github.com/MeijoMeguroLab/open_data/blob/main/docs/2020_dataset.md)]
 
 ## Contributors
 <b>Junichi Meguro, Meijo University, Japan</b><br>
