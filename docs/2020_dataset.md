@@ -1,23 +1,14 @@
-## 正式な記載内容は[英語版](https://github.com/MeijoMeguroLab/open_data/blob/main/docs/2019_dataset.md)を確認してください.
+## 正式な記載内容は[英語版](https://github.com/MeijoMeguroLab/open_data/blob/main/docs/2020_dataset.md)を確認してください.
 
 # 自律走行のためのGNSS/IMUオープンデータセット
  データセットのご利用をご希望の方は、[[こちら](https://forms.gle/w22wkHnyewGXhJN6A)]
  のフォームにご記入ください。担当者より配布先をご連絡させていただきます。
 ## システム/機材構成の説明
 
-<img src="car_2019_image.png" width="512">
+<img src="car_2020_image.png" width="512">
 <img src="car_image_across.png" width="512">
 &emsp;東京でのデータ収集のためのプラットフォームはトヨタのシエンタ(Sienta)です。<br>
 &emsp;このプラットフォームには以下のセンサーが搭載されています。<br>
-
-- <b>3D LiDAR</b>
-  - Model: Velodyne HDL-32E
-  - Vertical Field of view (FOV): +10~-30 degrees.
-  - Horizontal Field of view (FOV): 360 degrees.
-  - Ranging: max 80~100 meters.
-  - Data rate: 10 Hz.
-  - Channels: 32
-  - Accuracy: ± 2 cm accuracy
   
 - <b>IMU</b>
   - Model: ADIS16475-2
@@ -29,16 +20,22 @@
   - Model: u-blox F9P
     - Data rate: 5 Hz.
     - GNSS: BeiDou, Galileo, GPS / QZSS
-    - GNSS Bands: L2OF, L2C, E1B/C, B2I, E5b, L1C/A, L1OF, B1I
+    - GNSS Bands: B2I, E1B/C, L2OF, L2C, B1I, E5b, L1OF, L1C/A
     - Oscillator: TCXO
-  - Model: Trimble Alloy (Geodetic GNSS receiver)
-    - Data rate: 10 Hz.
+  - Model: Septentrio Mosaic-x5
+    - Data rate: 5 Hz.
     - GNSS: BeiDou, Galileo, GLONASS, GPS / QZSS
-    - GNSS Bands: L2OF, L2C, L5, E1B/C, B2I, E5b, L1C/A, L1OF, B1I
+    - GNSS Bands: E1C, L1OF, L1C/A, B2I, E5a, L2OF, L2C, L5, E5b
+  - Model: Trimble Alloy (Geodetic GNSS receiver)
+    - Data rate: 5 Hz.
+    - GNSS: BeiDou, Galileo, GLONASS, GPS / QZSS
+    - GNSS Bands: L5, B2I, E1B/C, L2OF, L2C, B1I, E5b, L1OF, L1C/A
 - <b>Rover GNSS Antenna</b>
-  - Model: AT1675-540 GNSS Antenna (AeroAntenna Technology, Inc.)
-
-
+  - Model: Trimble Zephyr 3 Rover
+- <b>CLAS receiver</b>
+  - Model: AQLOC-Light
+    - GNSS: Galileo, GPS / QZSS
+    - GNSS Bands: L6, L2C, E5b, L1C/A, E1
 - <b>Applanix POS LV</b> (high-grade RTK GNSS/INS integrated navigation system)
   - Model: POS LV 220
   - Data rate: 10 Hz.
@@ -53,22 +50,23 @@
 - <b>GNSS</b>
 
   <b>ファイル名:</b><br>
-  &emsp;移動局の観測ファイルは "rover_ublox.obs" と "rover_trimble.obs" になります.<br>
+  &emsp;移動局の観測ファイルは "rover_ublox.obs" "rover_mosaic.obs" と "rover_trimble.obs" になります.<br>
   &emsp;基準局の観測ファイルは "base_trimble.obs" になります.<br>
-  &emsp;BaseStationの位置は、ECEF座標で -3961904.9530, 3348993.7578, 3698211.7553 になります.<br>
+  &emsp;BaseStationの位置は、ECEF座標で -3961903.8578, 3348993.2385, 3698211.3503 になります.<br>
   
   <b>RINEX VERSION:</b>&emsp;RINEX 3.02<br>
   
   <b>取得周期:</b><br>
   |  ファイル名  |  周期  |
   | ---- | ---- |
-  |  rover_trimble.obs  |  10Hz  |
+  |  rover_trimble.obs  |  5Hz  |
+  |  rover_mosaic.obs  |  5Hz  |
   |  rover_ublox.obs  |  5Hz  |
   |  base_trimble.obs  |  1Hz  |
   
   <b>使用衛星:</b>&emsp;GPS, GLONASS, Galileo, BeiDou, QZSS<br>
   
-  &emsp;&emsp;搬送波位相, 議事距離, ドップラー, SNR情報を含みます.<br>
+  &emsp;&emsp;搬送波位相, 議事距離, ドップラー, SNR情報を含みます.(例外として、mosaic-x5はドップラーを含みません.)<br>
   
 - <b>IMU</b>
 
@@ -87,12 +85,12 @@
   |  Acceleration Z(m/s^2)  |
   |  Wheel velocity  |
 
-- <b>LiDAR</b>
+- <b>CLAS</b>
 
-  <b>ファイル名:</b>&emsp;lidar.bag<br>
+  <b>ファイル名:</b>&emsp;rover_clas.l6<br>
   <b>データ説明:</b><br>
-  &emsp;LiDARのデータはVelodyne_driverを元に収集しています。<br>
-  &emsp;Velodyne HDL-32Eを使用しました。データは velodyne_packets メッセージに保存されています。<br>
+  &emsp;CLASデータは [AQLOC-light](https://www.mitsubishielectric.co.jp/esg/aqloc/products/light/)を使用して収集しました.<br>
+  &emsp;データはCLASのパケットメッセージに格納されています。<br>
   
 - <b>リファレンス</b>
 
@@ -133,34 +131,23 @@
 ## データセット説明
 
 ### 走行データ1
- <b>日付&emsp;2019/11/02</b><br>
+ <b>Date&emsp;2020/12/17</b><br>
  
   |    |  GPS Week  |  GPS TOW(s)  |
   | ---- | ---- | ---- |
-  |  開始  |  2077  |  545460  |
-  |  終了  |  2077  |  548370  |
+  |  Start  |  2136  |  360000  |
+  |  End  |  2136  |  362400  |
  
  <b>環境:</b>&emsp;お台場 Sub-Urban environment [[map](https://www.google.co.jp/maps/@35.6275683,139.7754449,14.75z?hl=ja)]<br>
- <img src="image_run1.png" width="480">
+ <img src="image_2020_run1.png" width="480">
 ***
 ### 走行データ2 
- <b>日付&emsp;2019/11/02</b><br>
+ <b>Date&emsp;2020/12/17</b><br>
  
   |    |  GPS Week  |  GPS TOW(s)  |
   | ---- | ---- | ---- |
-  |  開始  |  2077  |  548488  |
-  |  終了  |  2077  |  551002  |
+  |  Start  |  2136  |  368100  |
+  |  End  |  2136  |  370440  |
  
  <b>環境:</b>&emsp;お台場 Sub-Urban environment  [[map](https://www.google.co.jp/maps/@35.6275683,139.7754449,14.75z?hl=ja)]<br>
- <img src="image_run2.png" width="480">
-***
-### 走行データ3
- <b>日付&emsp;2019/11/02</b><br>
- 
-  |    |  GPS Week  |  GPS TOW(s)  |
-  | ---- | ---- | ---- |
-  |  開始  |  2077  |  551105  |
-  |  終了  |  2077  |  552679  |
-
- <b>環境:</b>&emsp;お台場 Sub-Urban environment [[map](https://www.google.co.jp/maps/@35.6343741,139.7892038,15.75z?hl=ja)]<br>
- <img src="image_run3.png" width="480">
+ <img src="image_2020_run2.png" width="480">
